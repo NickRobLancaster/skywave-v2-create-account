@@ -184,7 +184,7 @@
                   <label for="domain_prefix" class="block mb-3">Custom CRM Domain Prefix</label>
                   <input id="domain_prefix" type="text" placeholder="dundermifflin"
                     class="input input-bordered input-primary w-full mb-3" v-model.trim="data.domainPrefix"
-                    @blur="validateField(data.domainPrefix, /[A-Za-z]{3}/, `domainPrefix`)" />
+                    @keydown="validateField(data.domainPrefix, /[A-Za-z0-9]{3}/, `domainPrefix`)" />
                   <div v-if="validator.domainPrefix === true"
                     class="alert alert-error shadow-lg p-0 absolute -bottom-3">
                     <div>
@@ -201,8 +201,8 @@
 
               <!-- CUSTOM DOMAIN PREVIEW -->
               <div class="col-span-8 md:col-span-8">
-                <label class="block mb-3 text-center">Your custom login url will look like this:</label>
-                <p class="text-blue-500 text-center mb-3 cursor-pointer">
+                <label class="block mb-3 text-center font-bold text-xl">Your custom login url will look like this:</label>
+                <p v-if="data.domainPrefix" class="text-blue-500 text-center mb-3 cursor-pointer text-xl">
                   {{data.domainPrefix}}.crm.skywave.app
                 </p>
               </div>
@@ -678,7 +678,7 @@
           phone: "",
 
           //account preferences
-          domainPrefix: "DunderMifflin",
+          domainPrefix: "",
           seatCount: 0,
 
           //billing method
