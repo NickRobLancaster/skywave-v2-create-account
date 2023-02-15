@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.8" />
   <!-- jsdelivr cdn -->
   <script src="https://cdn.jsdelivr.net/npm/vue@3.7.0/dist/vue.js"></script>
   <!-- VUE 3 CDN -->
@@ -32,15 +32,15 @@
   <title>Website Title</title>
 </head>
 
-<body style="font-family: 'Montserrat', sans-serif">
+<body style="font-family: 'Montserrat', sans-serif" class="bg-gradient-to-b from-blue-400 to-blue-100">
   <div id="app">
     <div
-      class="flex items-center justify-center w-screen h-screen bg-gradient-to-b from-blue-400 to-blue-100 overflow-y-auto">
-      <div class="bg-white shadow-2xl shadow-slate-800 max-w-xl">
-        <form @submit.prevent="createAccount" action="" class="pb-20 md:pb-0">
+    class="md:flex md:items-center md:justify-center w-screen h-screen md:h-screen overflow-y-auto p-8 md:p-0">
+      <div class="bg-white shadow-2xl max-w-xl mb-12">
+        <form @submit.prevent="createAccount" action="" class="pb- md:pb-0">
           <!-- FORM HEADER -->
           <div class="bg-blue-500 p-3 flex justify-center">
-            <img src="./images/swLogo.png" alt="Skywave CRM Logo" class="w-1/2" />
+            <img src="./images/swLogo.png" alt="Skywave CRM Logo" class="w-4/6" />
           </div>
 
           <!-- FORM HEADER TITLE -->
@@ -53,7 +53,7 @@
           </div>
 
           <div class="bg-gradient-to-t from-indigo-500 to-sky-500 text-white py-3">
-            <ul class="steps">
+            <ul class="steps text-xs md:text-base">
               <li :class="{'step-info':currentSlide >= 0}" class="step">Register<br />Details</li>
               <li :class="{'step-info':currentSlide >= 1}" class="step">Account Preferences</li>
               <li :class="{'step-info':currentSlide >= 2}" class="step">Billing<br />Method</li>
@@ -578,7 +578,7 @@
               Back
             </button>
             <div class="stats md:border-none rounded md:rounded-lg shadow-md md:shadow-none">
-              <div v-if="data.seatCount" class="stat p-1 md:p-5 md:hidden">
+              <div v-if="data.seatCount" class="stat p-1 md:p-5 md:hidden text-center">
                 <div class="text-xs md:text-base">Due Today</div>
                 <div class="stat-value text-green-500 text-sm md:text-xl">
                   ${{data.seatCount.seatPrice}}.00
