@@ -1,1198 +1,1672 @@
 <!DOCTYPE html>
 <!-- DAISY UI THEME -->
 <html data-theme="winter" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+    <!-- VUE 3 CDN -->
+    <script src="https://unpkg.com/vue@3.x/dist/vue.global.js"></script>
+    <!-- DAISY UI CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.46.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- TAILWIND CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SIGNATURE PAD CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <!-- FONT AWESOME CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- MONSERAT FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=0.8" />
-  <!-- jsdelivr cdn -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@3.7.0/dist/vue.js"></script>
-  <!-- VUE 3 CDN -->
-  <script src="https://unpkg.com/vue@3.x/dist/vue.global.js"></script>
-  <!-- DAISY UI CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.46.1/dist/full.css" rel="stylesheet" type="text/css" />
-  <!-- TAILWIND CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- SIGNATURE PAD CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
-  <!-- ANIMATE CSS CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- FONT AWESOME CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- MONSERAT FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+    <!-- ESIGN FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat:wght@200&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- ESIGN FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat:wght@200&display=swap"
-    rel="stylesheet" />
+    <title>Website Title</title>
+  </head>
 
-  <title>Website Title</title>
-</head>
+  <body
+    style="font-family: 'Montserrat', sans-serif"
+    class="bg-gradient-to-b from-blue-400 to-blue-100"
+  >
+    <div id="app">
+      <div
+        class="md:flex md:items-center md:justify-center w-screen h-screen md:h-screen overflow-y-auto scroll-smooth p-8 md:p-0"
+      >
+        <div class="bg-white shadow-2xl max-w-xl mb-12">
 
-<body style="font-family: 'Montserrat', sans-serif" class="bg-gradient-to-b from-blue-400 to-blue-100">
-  <div id="app">
-    <div
-    class="md:flex md:items-center md:justify-center w-screen h-screen md:h-screen overflow-y-auto scroll-smooth p-8 md:p-0">
-      <div class="bg-white shadow-2xl max-w-xl mb-12">
-        <form @submit.prevent="createAccount" action="" class="md:pb-0">
-          <!-- FORM HEADER -->
-          <div class="bg-blue-500 p-3 flex justify-center">
-            <img src="./images/swLogo.png" alt="Skywave CRM Logo" class="w-4/6" />
-          </div>
-
-          <!-- FORM HEADER TITLE -->
-          <div v-if="currentSlide === 0" class="p-5">
-            <h3 class="text-2xl mb-3">Create Your Skywave Account</h3>
-            <p>
-              Please complete the form below. All information entered should
-              belong to the owner of the account
-            </p>
-          </div>
-
-          <div class="bg-gradient-to-t from-indigo-500 to-sky-500 text-white py-3">
-            <ul class="steps text-xs md:text-base">
-              <li :class="{'step-info':currentSlide >= 0}" class="step">Register<br />Details</li>
-              <li :class="{'step-info':currentSlide >= 1}" class="step">Account Preferences</li>
-              <li :class="{'step-info':currentSlide >= 2}" class="step">Billing<br />Method</li>
-              <li :class="{'step-info':currentSlide >= 3}" class="step">Billing<br />Address</li>
-              <li :class="{'step-info':currentSlide >= 4}" class="step">Terms of<br />Service</li>
-            </ul>
-          </div>
-
-          <!-- FORM BODY -->
-          <div class="bg-white p-5">
-            
-            <!-- BUSINESS BASIC INFO -->
-              <div v-show="currentSlide === 0" class="grid grid-cols-8 gap-3 bg-white">
-              <div class="col-span-8 md:col-span-8">
-                <p class="text-xl">Company Contact</p>
-              </div>
-              <!-- COMPANY NAME WRAPPER -->
-              <div class="col-span-8 md:col-span-8 relative">
-                <div>
-                  <label for="company_name" class="block mb-3">Company Name</label>
-                  <input id="company_name" type="text" placeholder="Dunder Mifflin"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.companyName"
-                    @blur="validateField(data.companyName, /[A-Za-z]{3}/, `companyName`)" />
-                  <div v-if="validator.companyName === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>3 Character Minimum</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- FIRST NAME WRAPPER -->
-              <div class="col-span-8 md:col-span-4 relative">
-                <div>
-                  <label for="first_name" class="block mb-3">First Name</label>
-                  <input id="first_name" type="text" placeholder="Michael"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.firstName"
-                    @blur="validateField(data.firstName, /[A-Za-z]{2}/, `firstName`)" />
-                </div>
-
-                <div v-if="validator.firstName === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>2 Character Minimum</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- LAST NAME WRAPPER -->
-              <div class="col-span-8 md:col-span-4 relative">
-                <div>
-                  <label for="last_name" class="block mb-3">Last Name</label>
-                  <input id="last_name" type="text" placeholder="Scott"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.lastName"
-                    @blur="validateField(data.lastName, /[A-Za-z]{2}/, `lastName`)" />
-                </div>
-
-                <div v-if="validator.lastName === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>2 Character Minimum</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-8 md:col-span-4 relative">
-                <div>
-                  <label for="email" class="block mb-3">Email</label>
-                  <input id="email" type="text" placeholder="michaelscott@dundermifflin.com"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.email"
-                    @blur="validateField(data.email, /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, `email`)" />
-                </div>
-
-                <div v-if="validator.email === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>Invalid Email Format</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-8 md:col-span-4 relative">
-                <div>
-                  <label for="phone" class="block mb-3">Phone</label>
-                  <input id="phone" type="text" placeholder="800-867-5309"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.phone"
-                    @blur="validateField(data.phone, /^[0-9]{10}$/, `phone`)" />
-                </div>
-
-                <div v-if="validator.phone === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>10 Character Minimum</span>
-                  </div>
-                </div>
-              </div>
-              </div>
-
-            <!-- CRM SET UP / USER COUNT / URL DOMAIN -->
-            <div v-show="currentSlide === 1" class="grid grid-cols-8 gap-3">
-              <div class="col-span-8 md:col-span-8">
-                <p class="text-xl">Account Preferences</p>
-              </div>
-
-              <!-- CUSTOM DOMAIN WRAPPER -->
-              <div class="col-span-8 md:col-span-8 relative">
-                <div>
-                  <label for="domain_prefix" class="block mb-3">Custom CRM Domain Prefix</label>
-                  <input id="domain_prefix" type="text" placeholder="dundermifflin"
-                    class="input input-bordered input-primary w-full mb-3" v-model.trim="data.domainPrefix"
-                    @input="validateField(data.domainPrefix, /^[a-zA-Z0-9]{3,15}$/, `domainPrefix`)" />
-                  <div v-if="validator.domainPrefix === true"
-                    class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Must Be 3 - 15 Characters</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- CUSTOM DOMAIN PREVIEW -->
-              <div class="col-span-8 md:col-span-8">
-                <label class="block mb-3 text-center font-bold text-xl">Your custom login url will look like this:</label>
-                <p v-if="data.domainPrefix" class="text-blue-500 text-center mb-3 cursor-pointer text-xl">
-                  {{data.domainPrefix}}.crm.skywave.app
-                </p>
-              </div>
-
-              <!-- Seat Count Wrapper -->
-              <div class="col-span-8 md:col-span-8 relative">
-                <label for="seat_count" class="block mb-3">Number of Seats</label>
-                <select id="seat_count" class="select select-primary w-full" v-model="data.seatCount"
-                  @blur="validateField(data.seatCount, /^(?!0|null|false).+$/, `seatCount`)">
-                  <option disabled selected value="0">
-                    - Select Number of Users -
-                  </option>
-                  <option v-for="seat in seatsOptions" :key="seat.userSeats" :value="seat">
-                    {{seat.userSeats}}
-                  </option>
-                </select>
-                <div v-if="validator.seatCount === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>Choose One</span>
-                  </div>
-                </div>
-              </div>
+          <div class="md:pb-0">
+            <!-- FORM HEADER -->
+            <div class="bg-blue-500 p-3 flex justify-center">
+              <img
+                src="./images/swLogo.png"
+                alt="Skywave CRM Logo"
+                class="w-4/6"
+              />
             </div>
 
-            <!-- BUSINESS BILLING METHOD -->
-            <div v-show="currentSlide === 2" class="grid grid-cols-12 gap-3">
-              <div class="col-span-12 md:col-span-12">
-                <p class="text-xl">Company Billing Method</p>
-              </div>
-              <!-- NAME ON CARD WRAPPER -->
-              <div class="col-span-12 md:col-span-6 relative">
-                <div>
-                  <label for="name_on_card" class="block mb-3">Name on Card</label>
-                  <input id="name_on_card" type="text" placeholder="Michael Scott"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.cardOwnerName"
-                    @blur="validateField(data.cardOwnerName, /[A-Za-z]{3}/, `cardOwnerName`)" />
+            <!-- FORM HEADER TITLE -->
+            <div v-if="currentSlide === 0" class="p-5">
+              <h3 class="text-2xl mb-3">Create Your Skywave Account</h3>
+              <p>
+                Please complete the form below. All information entered should
+                belong to the owner of the account
+              </p>
+            </div>
 
-                  <div v-if="validator.cardOwnerName === true"
-                    class="alert alert-error shadow-lg p-0 absolute -bottom-3">
+            <div v-if="currentSlide !== 5"
+              class="bg-gradient-to-t from-indigo-500 to-sky-500 text-white py-3"
+            >
+              <ul class="steps text-xs md:text-base">
+                <li :class="{'step-info':currentSlide >= 0}" class="step">
+                  Register<br />Details
+                </li>
+                <li :class="{'step-info':currentSlide >= 1}" class="step">
+                  Account Preferences
+                </li>
+                <li :class="{'step-info':currentSlide >= 2}" class="step">
+                  Billing<br />Method
+                </li>
+                <li :class="{'step-info':currentSlide >= 3}" class="step">
+                  Billing<br />Address
+                </li>
+                <li :class="{'step-info':currentSlide >= 4}" class="step">
+                  Terms of<br />Service
+                </li>
+              </ul>
+            </div>
+
+            <!-- FORM BODY -->
+            <div v-if="currentSlide !== 5" class="bg-white p-5">
+              <!-- BUSINESS BASIC INFO -->
+              <div
+                v-show="currentSlide === 0"
+                class="grid grid-cols-8 gap-3 bg-white"
+              >
+                <div class="col-span-8 md:col-span-8">
+                  <p class="text-xl">Company Contact</p>
+                </div>
+                <!-- COMPANY NAME WRAPPER -->
+                <div class="col-span-8 md:col-span-8 relative">
+                  <div>
+                    <label for="company_name" class="block mb-3"
+                      >Company Name</label
+                    >
+                    <input
+                      id="company_name"
+                      type="text"
+                      placeholder="Dunder Mifflin"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.companyName"
+                      @blur="validateField(data.companyName, /[A-Za-z]{3}/, `companyName`)"
+                    />
+                    <div
+                      v-if="validator.companyName === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>3 Character Minimum</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- FIRST NAME WRAPPER -->
+                <div class="col-span-8 md:col-span-4 relative">
+                  <div>
+                    <label for="first_name" class="block mb-3"
+                      >First Name</label
+                    >
+                    <input
+                      id="first_name"
+                      type="text"
+                      placeholder="Michael"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.firstName"
+                      @blur="validateField(data.firstName, /[A-Za-z]{2}/, `firstName`)"
+                    />
+                  </div>
+
+                  <div
+                    v-if="validator.firstName === true"
+                    class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                  >
                     <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
                       </svg>
-                      <span>3 Character Minimum</span>
+                      <span>2 Character Minimum</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- LAST NAME WRAPPER -->
+                <div class="col-span-8 md:col-span-4 relative">
+                  <div>
+                    <label for="last_name" class="block mb-3">Last Name</label>
+                    <input
+                      id="last_name"
+                      type="text"
+                      placeholder="Scott"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.lastName"
+                      @blur="validateField(data.lastName, /[A-Za-z]{2}/, `lastName`)"
+                    />
+                  </div>
+
+                  <div
+                    v-if="validator.lastName === true"
+                    class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span>2 Character Minimum</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-span-8 md:col-span-4 relative">
+                  <div>
+                    <label for="email" class="block mb-3">Email</label>
+                    <input
+                      id="email"
+                      type="text"
+                      placeholder="michaelscott@dundermifflin.com"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.email"
+                      @blur="validateField(data.email, /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, `email`)"
+                    />
+                  </div>
+
+                  <div
+                    v-if="validator.email === true"
+                    class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span>Invalid Email Format</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-span-8 md:col-span-4 relative">
+                  <div>
+                    <label for="phone" class="block mb-3">Phone</label>
+                    <input
+                      id="phone"
+                      type="text"
+                      placeholder="800-867-5309"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.phone"
+                      @blur="validateField(data.phone, /^[0-9]{10}$/, `phone`)"
+                    />
+                  </div>
+
+                  <div
+                    v-if="validator.phone === true"
+                    class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span>10 Character Minimum</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- CARD NUMBER WRAPPER -->
-              <div class="col-span-12 md:col-span-6 relative">
-                <div>
-                  <label for="card_number" class="block mb-3">Card Number</label>
-                  <input id="card_number" type="text" placeholder="XXXX-XXXX-XXXX-XXXX"
-                    class="input input-bordered input-primary w-full" v-model.number.trim="data.cardNumber"
-                    @blur="validateField(data.cardNumber, /^[0-9]{15,16}$/, `cardNumber`)" />
+              <!-- CRM SET UP / USER COUNT / URL DOMAIN -->
+              <div v-show="currentSlide === 1" class="grid grid-cols-8 gap-3">
+                <div class="col-span-8 md:col-span-8">
+                  <p class="text-xl">Account Preferences</p>
                 </div>
-                <div v-if="validator.cardNumber === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
+
+                <!-- CUSTOM DOMAIN WRAPPER -->
+                <div class="col-span-8 md:col-span-8 relative">
                   <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>15 or 16 Characters Required</span>
+                    <label for="domain_prefix" class="block mb-3"
+                      >Custom CRM Domain Prefix</label
+                    >
+                    <input
+                      id="domain_prefix"
+                      type="text"
+                      placeholder="dundermifflin"
+                      class="input input-bordered input-primary w-full mb-3"
+                      v-model.trim="data.domainPrefix"
+                      @input="validateField(data.domainPrefix, /^[a-zA-Z0-9]{3,15}$/, `domainPrefix`)"
+                    />
+                    <div
+                      v-if="validator.domainPrefix === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Must Be 3 - 15 Characters</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- CARD TYPE WRAPPER -->
-              <div class="col-span-12 md:col-span-4 relative">
-                <div>
-                  <label for="card_type" class="block mb-3">Card Type</label>
-                  <select id="card_type" class="select select-primary w-full" v-model="data.cardType"
-                    @blur="validateField(data.cardType, /^(?!0|null|false).+$/, `cardType`)">
-                    <option disabled selected value="0">
-                      - Select Card Type -
-                    </option>
-                    <option v-for="cardType in cardTypesOptions" :key="cardType" :value="cardType">
-                      {{cardType}}
-                    </option>
-                  </select>
+                <!-- CUSTOM DOMAIN PREVIEW -->
+                <div class="col-span-8 md:col-span-8">
+                  <label class="block mb-3 text-center font-bold text-xl"
+                    >Your custom login url will look like this:</label
+                  >
+                  <p
+                    v-if="data.domainPrefix"
+                    class="text-blue-500 text-center mb-3 cursor-pointer text-xl"
+                  >
+                    {{data.domainPrefix}}.crm.skywave.app
+                  </p>
                 </div>
-                <div v-if="validator.cardType === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                      viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>Choose One</span>
-                  </div>
-                </div>
-              </div>
 
-              <!-- EXPIRATION MONTH WRAPPER  -->
-              <div class="col-span-12 md:col-span-4 relative">
-                <div>
-                  <label for="exp_month" class="block mb-3">Expiration Month</label>
-                  <select id="exp_month" class="select select-primary w-full" v-model="data.cardMonthExpiration"
-                    @blur="validateField(data.cardMonthExpiration, /^(?!0+$)(?!\s*(null|false)\s*$).+/, `cardMonthExpiration`)">
-                    <option disabled selected value="0">
-                      - Select Exp Month -
+                <!-- Seat Count Wrapper -->
+                <div class="col-span-8 md:col-span-8 relative">
+                  <label for="seat_count" class="block mb-3"
+                    >Number of Seats</label
+                  >
+                  <input
+                  type="number"
+                    id="seat_count"
+                    class="input input-primary w-full"
+                    v-model.number="data.seatCount"
+                    @blur="validateField(data.seatCount, /^(?!0|null|false).+$/, `seatCount`)"
+                    min="3"
+                  >
+                    <!-- <option disabled selected value="0">
+                      - Select Number of Users -
                     </option>
-                    <option v-for="month in expirationMonthOptions" :key="month.monthName" :value="month.monthNumber">
-                      {{month.monthNumber}} | {{month.monthName}}
+                    <option
+                      v-for="seat in seatsOptions"
+                      :key="seat.userSeats"
+                      :value="seat.seatsNumber"
+                    >
+                      {{seat.userSeats}}
                     </option>
-                  </select>
-                  <div v-if="validator.cardMonthExpiration === true"
-                    class="alert alert-error shadow-lg p-0 absolute -bottom-3">
+                  </select> -->
+                  <div
+                    v-if="validator.seatCount === true"
+                    class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                  >
                     <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span>Input The Number of Seats Desired</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUSINESS BILLING METHOD -->
+              <div v-show="currentSlide === 2" class="grid grid-cols-12 gap-3">
+                <div class="col-span-12 md:col-span-12">
+                  <p class="text-xl">Company Billing Method</p>
+                </div>
+                <!-- NAME ON CARD WRAPPER -->
+                <div class="col-span-12 md:col-span-6 relative">
+                  <div>
+                    <label for="name_on_card" class="block mb-3"
+                      >Name on Card</label
+                    >
+                    <input
+                      id="name_on_card"
+                      type="text"
+                      placeholder="Michael Scott"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.cardOwnerName"
+                      @blur="validateField(data.cardOwnerName, /[A-Za-z]{3}/, `cardOwnerName`)"
+                    />
+
+                    <div
+                      v-if="validator.cardOwnerName === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>3 Character Minimum</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CARD NUMBER WRAPPER -->
+                <div class="col-span-12 md:col-span-6 relative">
+                  <div>
+                    <label for="card_number" class="block mb-3"
+                      >Card Number</label
+                    >
+                    <input
+                      id="card_number"
+                      type="text"
+                      placeholder="XXXX-XXXX-XXXX-XXXX"
+                      class="input input-bordered input-primary w-full"
+                      v-model.number.trim="data.cardNumber"
+                      @blur="validateField(data.cardNumber, /^[0-9]{15,16}$/, `cardNumber`)"
+                    />
+                  </div>
+                  <div
+                    v-if="validator.cardNumber === true"
+                    class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span>15 or 16 Characters Required</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CARD TYPE WRAPPER -->
+                <div class="col-span-12 md:col-span-4 relative">
+                  <div>
+                    <label for="card_type" class="block mb-3">Card Type</label>
+                    <select
+                      id="card_type"
+                      class="select select-primary w-full"
+                      v-model="data.cardType"
+                      @blur="validateField(data.cardType, /^(?!0|null|false).+$/, `cardType`)"
+                    >
+                      <option disabled selected value="0">
+                        - Select Card Type -
+                      </option>
+                      <option
+                        v-for="cardType in cardTypesOptions"
+                        :key="cardType"
+                        :value="cardType"
+                      >
+                        {{cardType}}
+                      </option>
+                    </select>
+                  </div>
+                  <div
+                    v-if="validator.cardType === true"
+                    class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                  >
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="stroke-current flex-shrink-0 h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
                       </svg>
                       <span>Choose One</span>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- EXPIRATION YEAR WRAPPER -->
-              <div class="col-span-12 md:col-span-4 relative">
-                <div>
-                  <label for="exp_year" class="block mb-3">Expiration Year</label>
-                  <select id="exp_year" class="select select-primary w-full" v-model="data.cardYearExpiration"
-                    @blur="validateField(data.cardYearExpiration, /^(?!0+$)(?!\s*(null|false)\s*$).+/, `cardYearExpiration`)">
-                    <option disabled selected value="0">
-                      - Select Exp Year -
-                    </option>
-                    <option v-for="year in expirationYearOptions" :key="year" :value="year">
-                      {{year}}
-                    </option>
-                  </select>
-                  <div v-if="validator.cardYearExpiration === true"
-                    class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Choose One</span>
+                <!-- EXPIRATION MONTH WRAPPER  -->
+                <div class="col-span-12 md:col-span-4 relative">
+                  <div>
+                    <label for="exp_month" class="block mb-3"
+                      >Expiration Month</label
+                    >
+                    <select
+                      id="exp_month"
+                      class="select select-primary w-full"
+                      v-model="data.cardMonthExpiration"
+                      @blur="validateField(data.cardMonthExpiration, /^(?!0+$)(?!\s*(null|false)\s*$).+/, `cardMonthExpiration`)"
+                    >
+                      <option disabled selected value="0">
+                        - Select Exp Month -
+                      </option>
+                      <option
+                        v-for="month in expirationMonthOptions"
+                        :key="month.monthName"
+                        :value="month.monthNumber"
+                      >
+                        {{month.monthNumber}} | {{month.monthName}}
+                      </option>
+                    </select>
+                    <div
+                      v-if="validator.cardMonthExpiration === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Choose One</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- EXPIRATION YEAR WRAPPER -->
+                <div class="col-span-12 md:col-span-4 relative">
+                  <div>
+                    <label for="exp_year" class="block mb-3"
+                      >Expiration Year</label
+                    >
+                    <select
+                      id="exp_year"
+                      class="select select-primary w-full"
+                      v-model="data.cardYearExpiration"
+                      @blur="validateField(data.cardYearExpiration, /^(?!0+$)(?!\s*(null|false)\s*$).+/, `cardYearExpiration`)"
+                    >
+                      <option disabled selected value="0">
+                        - Select Exp Year -
+                      </option>
+                      <option
+                        v-for="year in expirationYearOptions"
+                        :key="year"
+                        :value="year"
+                      >
+                        {{year}}
+                      </option>
+                    </select>
+                    <div
+                      v-if="validator.cardYearExpiration === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Choose One</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CVV WRAPPER -->
+                <div class="col-span-12 md:col-span-6 relative">
+                  <div>
+                    <label for="cvv" class="block mb-3">CVV</label>
+                    <input
+                      id="cvv"
+                      type="text"
+                      placeholder="123"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.cardCvv"
+                      @blur="validateField(data.cardCvv, /^[0-9]{3,4}$/, `cardCvv`)"
+                    />
+                    <div
+                      v-if="validator.cardCvv === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Enter CVV</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BILLING ZIP WRAPPER -->
+                <div class="col-span-12 md:col-span-6 relative">
+                  <div>
+                    <label for="billing_zip" class="block mb-3"
+                      >Billing Zip</label
+                    >
+
+                    <input
+                      id="billing_zip"
+                      type="text"
+                      placeholder="18540"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.cardZip"
+                      @blur="validateField(data.cardZip, /^[0-9]{5}$/, `cardZip`)"
+                    />
+
+                    <div
+                      v-if="validator.cardZip === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Enter Zip</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- CVV WRAPPER -->
-              <div class="col-span-12 md:col-span-6 relative">
-                <div>
-                  <label for="cvv" class="block mb-3">CVV</label>
-                  <input id="cvv" type="text" placeholder="123" class="input input-bordered input-primary w-full"
-                    v-model.trim="data.cardCvv" @blur="validateField(data.cardCvv, /^[0-9]{3,4}$/, `cardCvv`)" />
-                  <div v-if="validator.cardCvv === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Enter CVV</span>
+              <!-- BUSINESS BILLING ADDRESS -->
+              <div v-show="currentSlide === 3" class="grid grid-cols-12 gap-3">
+                <div class="col-span-12 md:col-span-12">
+                  <p class="text-xl">Company Billing Address</p>
+                </div>
+
+                <!-- BILLING STREET ADDRESS WRAPPER -->
+                <div class="col-span-12 md:col-span-8 relative">
+                  <div>
+                    <label for="billing_street_address" class="block mb-3"
+                      >Billing Street Address</label
+                    >
+                    <input
+                      id="billing_street_address"
+                      type="text"
+                      placeholder="1725 Slough Ave"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.billingStreetAddress"
+                      @blur="validateField(data.billingStreetAddress, /^[a-zA-Z0-9 .]{5,40}$/, `billingStreetAddress`)"
+                    />
+
+                    <div
+                      v-if="validator.billingStreetAddress === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Enter Street Address</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SUITE / UNIT WRAPPER -->
+                <div class="col-span-12 md:col-span-4 relative">
+                  <div>
+                    <label for="suite_unit" class="block mb-3"
+                      >Suite / Unit</label
+                    >
+                    <input
+                      id="suite_unit"
+                      type="text"
+                      placeholder="Suite 200"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.billingSuiteUnit"
+                    />
+                  </div>
+                </div>
+
+                <!-- CITY WRAPPER -->
+                <div class="col-span-12 md:col-span-4 relative">
+                  <div>
+                    <label for="city" class="block mb-3">City</label>
+                    <input
+                      id="city"
+                      type="text"
+                      placeholder="Scranton"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.billingCity"
+                      @blur="validateField(data.billingCity, /^.{3,}$/, `billingCity`)"
+                    />
+                    <div
+                      v-if="validator.billingCity === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Enter City</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- STATE WRAPPER -->
+                <div class="col-span-12 md:col-span-4 relative">
+                  <div>
+                    <label for="state" class="block mb-3">State</label>
+                    <select
+                      id="state"
+                      class="select select-primary w-full"
+                      v-model="data.billingState"
+                      @blur="validateField(data.billingState, /^(?!0|null|false).+$/, `billingState`)"
+                    >
+                      <option disabled selected value="0">
+                        - Select State -
+                      </option>
+                      <option
+                        v-for="state in statesOptions"
+                        :key="state.abbreviation"
+                        :value="state.abbreviation"
+                      >
+                        {{state.name}}
+                      </option>
+                    </select>
+                    <div
+                      v-if="validator.billingState === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Choose One</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BILLING ZIP WRAPPER -->
+                <div class="col-span-12 md:col-span-4 relative">
+                  <div>
+                    <label for="zip" class="block mb-3">Zip</label>
+                    <input
+                      id="zip"
+                      type="text"
+                      placeholder="18540"
+                      class="input input-bordered input-primary w-full"
+                      v-model.trim="data.billingZip"
+                      @blur="validateField(data.billingZip, /^[0-9]{5}$/, `billingZip`)"
+                    />
+                    <div
+                      v-if="validator.billingZip === true"
+                      class="alert alert-error shadow-lg p-0 absolute -bottom-3"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Enter Zip</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- BILLING ZIP WRAPPER -->
-              <div class="col-span-12 md:col-span-6 relative">
-                <div>
-                  <label for="billing_zip" class="block mb-3">Billing Zip</label>
+              <!-- TERMS OF SERVICE | ESIGNATURE -->
+              <div v-show="currentSlide === 4" class="grid grid-cols-8 gap-3">
+                <div class="col-span-8 md:col-span-8">
+                  <p class="text-xl">Terms of Service</p>
+                </div>
 
-                  <input id="billing_zip" type="text" placeholder="18540"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.cardZip"
-                    @blur="validateField(data.cardZip, /^[0-9]{5}$/, `cardZip`)" />
+                <!-- SIGNATURE PAD -->
+                <div class="col-span-8">
+                  <div
+                    class="grid grid-cols-2 gap-1 p-1 rounded-lg relative bg-gray-400"
+                  >
+                    <label
+                      for="zip"
+                      class="block mb-3 mt-3 col-span-2 text-white text-center"
+                      >Draw Your Signature</label
+                    >
+                    <canvas
+                      ref="canvas"
+                      class="border w-full col-span-2 rounded bg-sky-100 z-10 h-44"
+                    ></canvas>
 
-                  <div v-if="validator.cardZip === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Enter Zip</span>
+                    <div
+                      v-if="validator.signatureData === true"
+                      class="alert alert-error shadow-lg p-0 absolute top-3 z-20"
+                    >
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="stroke-current flex-shrink-0 h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>Please Sign and Save</span>
+                      </div>
                     </div>
+
+                    <button
+                      type="button"
+                      @click="clear"
+                      class="btn btn-error bg-red-500 text-white capitalize"
+                    >
+                      Erase
+                    </button>
+
+                    <button
+                      type="button"
+                      @click="save"
+                      class="btn btn-info bg-sky-400 text-white capitalize"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  v-if="data.signatureData"
+                  class="form-control col-span-8 bg-blue-200 px-2"
+                >
+                  <label for="adopt_signature" class="label cursor-pointer">
+                    <span class="label-text"
+                      >Adopt & Electronically Sign Using The Above
+                      Signature</span
+                    >
+                    <input
+                      id="adopt_signature"
+                      type="checkbox"
+                      class="checkbox checkbox-primary"
+                      v-model="data.adoptSignature"
+                    />
+                  </label>
+                </div>
+
+                <div
+                  v-if="data.adoptSignature"
+                  class="form-control col-span-8 bg-green-200 px-2"
+                >
+                  <label for="tos" class="label cursor-pointer">
+                    <span class="label-text"
+                      >Agree to
+                      <a
+                        class="link"
+                        target="_blank"
+                        href="https://skywave.app/terms-of-service/"
+                        >Terms of Service</a
+                      ></span
+                    >
+                    <input
+                      id="tos"
+                      type="checkbox"
+                      class="checkbox checkbox-primary"
+                      v-model="data.tos"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- PRICE FOOTER -->
+            <div
+              v-if="data.seatCount"
+              class="fixed bottom-0 right-0 md:flex md:justify-end md:p-5"
+            >
+              <div class="stats border rounded-none md:rounded-lg shadow-xl">
+                <div class="stat p-2 md:p-5">
+                  <div class="text-xs md:text-base">Total Due Today</div>
+                  <div class="stat-value text-green-500 text-sm md:text-3xl">
+                    ${{data.totalDueToday}}.00
                   </div>
                 </div>
               </div>
             </div>
-            
-            <!-- BUSINESS BILLING ADDRESS -->
-            <div v-show="currentSlide === 3" class="grid grid-cols-12 gap-3">
-              <div class="col-span-12 md:col-span-12">
-                <p class="text-xl">Company Billing Address</p>
-              </div>
-
-              <!-- BILLING STREET ADDRESS WRAPPER -->
-              <div class="col-span-12 md:col-span-8 relative">
-                <div>
-                  <label for="billing_street_address" class="block mb-3">Billing Street Address</label>
-                  <input id="billing_street_address" type="text" placeholder="1725 Slough Ave"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.billingStreetAddress"
-                    @blur="validateField(data.billingStreetAddress, /^[a-zA-Z0-9 .]{5,40}$/, `billingStreetAddress`)" />
-
-                  <div v-if="validator.billingStreetAddress === true"
-                    class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Enter Street Address</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SUITE / UNIT WRAPPER -->
-              <div class="col-span-12 md:col-span-4 relative">
-                <div>
-                  <label for="suite_unit" class="block mb-3">Suite / Unit</label>
-                  <input id="suite_unit" type="text" placeholder="Suite 200"
-                    class="input input-bordered input-primary w-full" v-model.trim="data.billingSuiteUnit" />
-                </div>
-              </div>
-
-              <!-- CITY WRAPPER -->
-              <div class="col-span-12 md:col-span-4 relative">
-                <div>
-                  <label for="city" class="block mb-3">City</label>
-                  <input id="city" type="text" placeholder="Scranton" class="input input-bordered input-primary w-full"
-                    v-model.trim="data.billingCity"
-                    @blur="validateField(data.billingCity, /^.{3,}$/, `billingCity`)" />
-                  <div v-if="validator.billingCity === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Enter City</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- STATE WRAPPER -->
-              <div class="col-span-12 md:col-span-4 relative">
-                <div>
-                  <label for="state" class="block mb-3">State</label>
-                  <select id="state" class="select select-primary w-full" v-model="data.billingState"
-                    @blur="validateField(data.billingState, /^(?!0|null|false).+$/, `billingState`)">
-                    <option disabled selected value="0">
-                      - Select State -
-                    </option>
-                    <option v-for="state in statesOptions" :key="state.abbreviation" :value="state.abbreviation">
-                      {{state.name}}
-                    </option>
-                  </select>
-                  <div v-if="validator.billingState === true"
-                    class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Choose One</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- BILLING ZIP WRAPPER -->
-              <div class="col-span-12 md:col-span-4 relative">
-                <div>
-                  <label for="zip" class="block mb-3">Zip</label>
-                  <input id="zip" type="text" placeholder="18540" class="input input-bordered input-primary w-full"
-                    v-model.trim="data.billingZip" @blur="validateField(data.billingZip, /^[0-9]{5}$/, `billingZip`)" />
-                  <div v-if="validator.billingZip === true" class="alert alert-error shadow-lg p-0 absolute -bottom-3">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Enter Zip</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- TERMS OF SERVICE | ESIGNATURE -->
-            <div v-show="currentSlide === 4" class="grid grid-cols-8 gap-3">
-              <div class="col-span-8 md:col-span-8">
-                <p class="text-xl">Terms of Service</p>
-              </div>
-
-              <!-- SIGNATURE PAD -->
-              <div class="col-span-8">
-                <div class="grid grid-cols-2 gap-1 p-1 rounded-lg relative bg-gray-400">
-                  <label for="zip" class="block mb-3 mt-3 col-span-2 text-white text-center">Draw Your Signature</label>
-                  <canvas ref="canvas" class="border w-full col-span-2 rounded bg-sky-100 z-10 h-44"></canvas>
-
-                  <div v-if="validator.signatureData === true"
-                    class="alert alert-error shadow-lg p-0 absolute top-3 z-20">
-                    <div>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>Please Sign and Save</span>
-                    </div>
-                  </div>
-
-                  <button type="button" @click="clear" class="btn btn-error bg-red-500 text-white capitalize">
-                    Erase
-                  </button>
-
-                  <button type="button" @click="save" class="btn btn-info bg-sky-400 text-white capitalize">
-                    Save
-                  </button>
-                </div>
-              </div>
-
-              <div v-if="data.signatureData" class="form-control col-span-8 bg-blue-200 px-2">
-                <label for="adopt_signature" class="label cursor-pointer">
-                  <span class="label-text">Adopt & Electronically Sign Using The Above
-                    Signature</span>
-                  <input id="adopt_signature" type="checkbox" class="checkbox checkbox-primary"
-                    v-model="data.adoptSignature" />
-                </label>
-              </div>
-
-              <div v-if="data.adoptSignature" class="form-control col-span-8 bg-green-200 px-2">
-                <label for="tos" class="label cursor-pointer">
-                  <span class="label-text">Agree to
-                    <a class="link" target="_blank" href="https://skywave.app/terms-of-service/">Terms of
-                      Service</a></span>
-                  <input id="tos" type="checkbox" class="checkbox checkbox-primary" v-model="data.tos" />
-                </label>
-              </div>
-            </div>
-
-          </div>
-          <!-- PRICE FOOTER -->
-          <div v-if="data.seatCount" class="fixed bottom-0 right-0 md:flex md:justify-end md:p-5">
-            <div class="stats border rounded-none md:rounded-lg shadow-xl">
-              <div class="stat p-2 md:p-5">
-                <div class="text-xs md:text-base">Total Due Today</div>
-                <div class="stat-value text-green-500 text-sm md:text-3xl">
-                  ${{data.seatCount.seatPrice}}.00
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- FORM FOOTER - BUTTON NAVIGATION -->
-          <div
-            class="w-full md:relative grid grid-cols-3 gap-4 items-center p-1 md:p-5 border-t fixed bottom-0 right-0 bg-white">
-            <button v-if="currentSlide !== 0" @click="previousSlide(currentSlide)" type="button"
-              class="capitalize btn btn-warning bg-orange-500 text-white">
-              Back
-            </button>
-            <div class="stats md:border-none rounded md:rounded-lg shadow-md md:shadow-none">
-              <div v-if="data.seatCount" class="stat p-1 md:p-5 md:hidden text-center">
-                <div class="text-xs md:text-base">Due Today</div>
-                <div class="stat-value text-green-500 text-sm md:text-xl">
-                  ${{data.seatCount.seatPrice}}.00
-                </div>
-              </div>
-            </div>
-            <!-- HOLDS NEXT & FINAL SUBMIT BUTTON -->
-            <div class="w-full">
-              <button v-if="currentSlide !== 4" @click="validateSlide(currentSlide)" type="button"
-                class="w-full capitalize btn btn-primary bg-blue-500 text-white">
-                Next
+            <!-- FORM FOOTER - BUTTON NAVIGATION -->
+            <div v-if="currentSlide !== 5"
+              class="w-full md:relative grid grid-cols-3 gap-4 items-center p-1 md:p-5 border-t fixed bottom-0 right-0 bg-white"
+            >
+              <button
+                v-if="currentSlide !== 0 && currentSlide !== 5"
+                @click="previousSlide(currentSlide)"
+                type="button"
+                class="capitalize btn btn-warning bg-orange-500 text-white"
+              >
+                Back
               </button>
+              <div
+                class="stats md:border-none rounded md:rounded-lg shadow-md md:shadow-none"
+              >
+                <div
+                  v-if="data.seatCount"
+                  class="stat p-1 md:p-5 md:hidden text-center"
+                >
+                  <div class="text-xs md:text-base">Due Today</div>
+                  <div class="stat-value text-green-500 text-sm md:text-xl">
+                    ${{data.totalDueToday}}.00
+                  </div>
+                </div>
+              </div>
+              <!-- HOLDS NEXT & FINAL SUBMIT BUTTON -->
+              <div class="w-full">
+                <button
+                  v-if="currentSlide !== 4 && currentSlide !== 5"
+                  @click="validateSlide(currentSlide)"
+                  type="button"
+                  class="w-full capitalize btn btn-primary bg-blue-500 text-white"
+                >
+                  Next
+                </button>
 
-              <button v-if="data.tos === true" type="submit"
-                class="w-full capitalize btn bg-gradient-to-br btn-success from-green-800 via-green-400 to-green-800 hover:from-blue-800 hover:via-blue-400 hover:to-blue-800 text-white">
-                Create Account
-              </button>
+                <button
+                  @click.prevent="createAccount(data)"
+                  v-if="data.tos === true"
+                  type="submit"
+                  class="w-full capitalize btn bg-gradient-to-br btn-success from-green-800 via-green-400 to-green-800 hover:from-blue-800 hover:via-blue-400 hover:to-blue-800 text-white"
+                >
+                  Create Account
+                </button>
+              </div>
+            </div>
+            <!-- confirmation page | v-if="currentSlide === 5" -->
+            <div v-if="currentSlide === 5" class="bg-green-400 p-5">
+              <div class="hero bg-base-200 rounded-md">
+                <div class="hero-content text-center">
+                  <div class="w-full">
+                    <h1 class="text-5xl font-bold">Account Created</h1>
+                    <p class="py-6">We sent you an email to: <span class="bg-blue-500 text-white p-1 rounded-md">{{data.email}}</span>. <br />Please check your inbox to finish creating your account.<br /><span class="text-3xl">😃</span></p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
 
-    <!-- TEST DATA -->
-    <!-- <button @click="testData = !testData" class="btn fixed bottom-0 left-0">
+      <!-- TEST DATA
+      <button @click="testData = !testData" class="btn fixed bottom-0 left-0">
         Test Data
       </button>
       <div
         v-if="testData === true"
-        class="bg-black text-white fixed top-0 left-0 h-screen w-auto p-2"
+        class="bg-black text-white fixed top-0 left-0 h-screen w-auto p-2 max-w-full"
       >
+        <button @click="createAccount(data)" class="btn">Create Account</button>
+
         <pre>
-      {{data}}
-      {{validator}}
-      Current Slide: {{currentSlide}}
+        {{data}}
+
+        {{generateUUID}}
       </pre
         >
-      <button @click="testData = !testData" class="btn fixed bottom-0 left-0">
+
+        <button @click="testData = !testData" class="btn fixed bottom-0 left-0">
           Close Data
-      </button> -->
-  </div>
-  </div>
-</body>
+        </button> -->
+      </div>
+    </div>
+  </body>
 
-<script>
-  const { createApp } = Vue;
+  <script>    
+    const { createApp } = Vue;
 
-  createApp({
-    data() {
-      return {
-        //Toggle Test Data View
-        testData: true,
+    createApp({
+      data() {
+        return {
+          //Create Account - API Endpoint
+          apiUrl: 'http://localhost:3000/signup',
 
-        //SIGNATURE PAD
-        signaturePad: null,
+          //Toggle Test Data View
+          testData: true,
 
-        siteName: "Skywave CRM Account Creation",
-        currentSlide: 0,
-        validator: {
-          //basic company details
-          companyName: 0,
-          firstName: 0,
-          lastName: 0,
-          email: 0,
-          phone: 0,
+          //SIGNATURE PAD
+          signaturePad: null,
 
-          //account preferences
-          domainPrefix: 0,
-          seatCount: 0,
+          siteName: "Skywave CRM Account Creation",
+          currentSlide: 0,
+          validator: {
+            //basic company details
+            companyName: 0,
+            firstName: 0,
+            lastName: 0,
+            email: 0,
+            phone: 0,
 
-          //billing method
-          cardOwnerName: 0,
-          cardType: 0,
-          cardNumber: 0,
-          cardMonthExpiration: 0,
-          cardYearExpiration: 0,
-          cardCvv: 0,
-          cardZip: 0,
+            //account preferences
+            domainPrefix: 0,
+            seatCount: 0,
 
-          //billing address
-          billingStreetAddress: 0,
-          billingCity: 0,
-          billingState: 0,
-          billingZip: 0,
+            //billing method
+            cardOwnerName: 0,
+            cardType: 0,
+            cardNumber: 0,
+            cardMonthExpiration: 0,
+            cardYearExpiration: 0,
+            cardCvv: 0,
+            cardZip: 0,
 
-          //confirmation
-          signatureData: 0,
-          adoptSignature: 0,
-          tos: 0,
+            //billing address
+            billingStreetAddress: 0,
+            billingCity: 0,
+            billingState: 0,
+            billingZip: 0,
+
+            //confirmation
+            signatureData: 0,
+            adoptSignature: 0,
+            tos: 0,
+          },
+          data: {
+            //basic company details
+            companyName: "",
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+
+            //account preferences
+            domainPrefix: "",
+            seatCount: null,
+            totalDueToday: 0,
+
+            //billing method
+            cardOwnerName: "",
+            cardType: "0",
+            cardNumber: "",
+            cardMonthExpiration: "0",
+            cardYearExpiration: "0",
+            cardCvv: "",
+            cardZip: "",
+
+            //billing address
+            billingStreetAddress: "",
+            billingSuiteUnit: "",
+            billingCity: "",
+            billingState: "0",
+            billingZip: "",
+
+            //confirmation
+            signatureData: "",
+            adoptSignature: false,
+            tos: false,
+          },
+
+          cardTypesOptions: ["Visa", "Mastercard", "Discover"],
+
+          expirationMonthOptions: [
+            { monthName: "January", monthNumber: "01" },
+            { monthName: "February", monthNumber: "02" },
+            { monthName: "March", monthNumber: "03" },
+            { monthName: "April", monthNumber: "04" },
+            { monthName: "May", monthNumber: "05" },
+            { monthName: "June", monthNumber: "06" },
+            { monthName: "July", monthNumber: "07" },
+            { monthName: "August", monthNumber: "08" },
+            { monthName: "September", monthNumber: "09" },
+            { monthName: "October", monthNumber: "10" },
+            { monthName: "November", monthNumber: "11" },
+            { monthName: "December", monthNumber: "12" },
+          ],
+
+          expirationYearOptions: [
+            "2023",
+            "2024",
+            "2025",
+            "2026",
+            "2027",
+            "2028",
+            "2029",
+            "2030",
+            "2031",
+            "2032",
+            "2033",
+            "2034",
+            "2035",
+          ],
+
+          seatsOptions: [
+            { userSeats: "3 Users", seatsNumber: 3, seatPrice: 250 },
+            { userSeats: "4 Users", seatsNumber: 4, seatPrice: 325 },
+            { userSeats: "5 Users", seatsNumber: 5, seatPrice: 400 },
+            { userSeats: "6 Users", seatsNumber: 6, seatPrice: 475 },
+            { userSeats: "7 Users", seatsNumber: 7, seatPrice: 550 },
+            { userSeats: "8 Users", seatsNumber: 8, seatPrice: 625 },
+            { userSeats: "9 Users", seatsNumber: 9, seatPrice: 700 },
+            { userSeats: "10 Users", seatsNumber: 10, seatPrice: 775 },
+            { userSeats: "11 Users", seatsNumber: 11, seatPrice: 850 },
+            { userSeats: "12 Users", seatsNumber: 12, seatPrice: 925 },
+            { userSeats: "13 Users", seatsNumber: 13, seatPrice: 1000 },
+            { userSeats: "14 Users", seatsNumber: 14, seatPrice: 1075 },
+            { userSeats: "15 Users", seatsNumber: 15, seatPrice: 1150 },
+            { userSeats: "16 Users", seatsNumber: 16, seatPrice: 1225 },
+            { userSeats: "17 Users", seatsNumber: 17, seatPrice: 1300 },
+            { userSeats: "18 Users", seatsNumber: 18, seatPrice: 1375 },
+            { userSeats: "19 Users", seatsNumber: 19, seatPrice: 1450 },
+            { userSeats: "20 Users", seatsNumber: 20, seatPrice: 1525 },
+            { userSeats: "21 Users", seatsNumber: 21, seatPrice: 1600 },
+            { userSeats: "22 Users", seatsNumber: 22, seatPrice: 1675 },
+            { userSeats: "23 Users", seatsNumber: 23, seatPrice: 1750 },
+            { userSeats: "24 Users", seatsNumber: 24, seatPrice: 1825 },
+            { userSeats: "25 Users", seatsNumber: 25, seatPrice: 1900 },
+            { userSeats: "26 Users", seatsNumber: 26, seatPrice: 1975 },
+            { userSeats: "27 Users", seatsNumber: 27, seatPrice: 2050 },
+            { userSeats: "28 Users", seatsNumber: 28, seatPrice: 2125 },
+            { userSeats: "29 Users", seatsNumber: 29, seatPrice: 2200 },
+            { userSeats: "30 Users", seatsNumber: 30, seatPrice: 2275 },
+            { userSeats: "31 Users", seatsNumber: 31, seatPrice: 2350 },
+            { userSeats: "32 Users", seatsNumber: 32, seatPrice: 2425 },
+            { userSeats: "33 Users", seatsNumber: 33, seatPrice: 2500 },
+            { userSeats: "34 Users", seatsNumber: 34, seatPrice: 2575 },
+            { userSeats: "35 Users", seatsNumber: 35, seatPrice: 2650 },
+            { userSeats: "36 Users", seatsNumber: 36, seatPrice: 2725 },
+            { userSeats: "37 Users", seatsNumber: 37, seatPrice: 2800 },
+            { userSeats: "38 Users", seatsNumber: 38, seatPrice: 2875 },
+            { userSeats: "39 Users", seatsNumber: 39, seatPrice: 2950 },
+            { userSeats: "40 Users", seatsNumber: 40, seatPrice: 3025 },
+            { userSeats: "41 Users", seatsNumber: 41, seatPrice: 3100 },
+            { userSeats: "42 Users", seatsNumber: 42, seatPrice: 3175 },
+            { userSeats: "43 Users", seatsNumber: 43, seatPrice: 3250 },
+            { userSeats: "44 Users", seatsNumber: 44, seatPrice: 3325 },
+            { userSeats: "45 Users", seatsNumber: 45, seatPrice: 3400 },
+            { userSeats: "46 Users", seatsNumber: 46, seatPrice: 3475 },
+            { userSeats: "47 Users", seatsNumber: 47, seatPrice: 3550 },
+            { userSeats: "48 Users", seatsNumber: 48, seatPrice: 3625 },
+            { userSeats: "49 Users", seatsNumber: 49, seatPrice: 3700 },
+            { userSeats: "50 Users", seatsNumber: 50, seatPrice: 2500 },
+            { userSeats: "51 Users", seatsNumber: 51, seatPrice: 2550 },
+            { userSeats: "52 Users", seatsNumber: 52, seatPrice: 2600 },
+            { userSeats: "53 Users", seatsNumber: 53, seatPrice: 2650 },
+            { userSeats: "54 Users", seatsNumber: 54, seatPrice: 2700 },
+            { userSeats: "55 Users", seatsNumber: 55, seatPrice: 2750 },
+            { userSeats: "56 Users", seatsNumber: 56, seatPrice: 2800 },
+            { userSeats: "57 Users", seatsNumber: 57, seatPrice: 2850 },
+            { userSeats: "58 Users", seatsNumber: 58, seatPrice: 2900 },
+            { userSeats: "59 Users", seatsNumber: 59, seatPrice: 2950 },
+            { userSeats: "60 Users", seatsNumber: 60, seatPrice: 3000 },
+            { userSeats: "61 Users", seatsNumber: 61, seatPrice: 3050 },
+            { userSeats: "62 Users", seatsNumber: 62, seatPrice: 3100 },
+            { userSeats: "63 Users", seatsNumber: 63, seatPrice: 3150 },
+            { userSeats: "64 Users", seatsNumber: 64, seatPrice: 3200 },
+            { userSeats: "65 Users", seatsNumber: 65, seatPrice: 3250 },
+            { userSeats: "66 Users", seatsNumber: 66, seatPrice: 3300 },
+            { userSeats: "67 Users", seatsNumber: 67, seatPrice: 3350 },
+            { userSeats: "68 Users", seatsNumber: 68, seatPrice: 3400 },
+            { userSeats: "69 Users", seatsNumber: 69, seatPrice: 3450 },
+            { userSeats: "70 Users", seatsNumber: 70, seatPrice: 3500 },
+            { userSeats: "71 Users", seatsNumber: 71, seatPrice: 3550 },
+            { userSeats: "72 Users", seatsNumber: 72, seatPrice: 3600 },
+            { userSeats: "73 Users", seatsNumber: 73, seatPrice: 3650 },
+            { userSeats: "74 Users", seatsNumber: 74, seatPrice: 3700 },
+            { userSeats: "75 Users", seatsNumber: 75, seatPrice: 3750 },
+            { userSeats: "76 Users", seatsNumber: 76, seatPrice: 3800 },
+            { userSeats: "77 Users", seatsNumber: 77, seatPrice: 3850 },
+            { userSeats: "78 Users", seatsNumber: 78, seatPrice: 3900 },
+            { userSeats: "79 Users", seatsNumber: 79, seatPrice: 3950 },
+            { userSeats: "80 Users", seatsNumber: 80, seatPrice: 4000 },
+            { userSeats: "81 Users", seatsNumber: 81, seatPrice: 4050 },
+            { userSeats: "82 Users", seatsNumber: 82, seatPrice: 4100 },
+            { userSeats: "83 Users", seatsNumber: 83, seatPrice: 4150 },
+            { userSeats: "84 Users", seatsNumber: 84, seatPrice: 4200 },
+            { userSeats: "85 Users", seatsNumber: 85, seatPrice: 4250 },
+            { userSeats: "86 Users", seatsNumber: 86, seatPrice: 4300 },
+            { userSeats: "87 Users", seatsNumber: 87, seatPrice: 4350 },
+            { userSeats: "88 Users", seatsNumber: 88, seatPrice: 4400 },
+            { userSeats: "89 Users", seatsNumber: 89, seatPrice: 4450 },
+            { userSeats: "90 Users", seatsNumber: 90, seatPrice: 4500 },
+            { userSeats: "91 Users", seatsNumber: 91, seatPrice: 4550 },
+            { userSeats: "92 Users", seatsNumber: 92, seatPrice: 4600 },
+            { userSeats: "93 Users", seatsNumber: 93, seatPrice: 4650 },
+            { userSeats: "94 Users", seatsNumber: 94, seatPrice: 4700 },
+            { userSeats: "95 Users", seatsNumber: 95, seatPrice: 4750 },
+            { userSeats: "96 Users", seatsNumber: 96, seatPrice: 4800 },
+            { userSeats: "97 Users", seatsNumber: 97, seatPrice: 4850 },
+            { userSeats: "98 Users", seatsNumber: 98, seatPrice: 4900 },
+            { userSeats: "99 Users", seatsNumber: 99, seatPrice: 4950 },
+            { userSeats: "100 Users", seatsNumber: 100, seatPrice: 5000 },
+          ],
+
+          statesOptions: [
+            {
+              name: "Alabama",
+              abbreviation: "AL",
+            },
+            {
+              name: "Alaska",
+              abbreviation: "AK",
+            },
+            {
+              name: "American Samoa",
+              abbreviation: "AS",
+            },
+            {
+              name: "Arizona",
+              abbreviation: "AZ",
+            },
+            {
+              name: "Arkansas",
+              abbreviation: "AR",
+            },
+            {
+              name: "California",
+              abbreviation: "CA",
+            },
+            {
+              name: "Colorado",
+              abbreviation: "CO",
+            },
+            {
+              name: "Connecticut",
+              abbreviation: "CT",
+            },
+            {
+              name: "Delaware",
+              abbreviation: "DE",
+            },
+            {
+              name: "District Of Columbia",
+              abbreviation: "DC",
+            },
+            {
+              name: "Federated States Of Micronesia",
+              abbreviation: "FM",
+            },
+            {
+              name: "Florida",
+              abbreviation: "FL",
+            },
+            {
+              name: "Georgia",
+              abbreviation: "GA",
+            },
+            {
+              name: "Guam",
+              abbreviation: "GU",
+            },
+            {
+              name: "Hawaii",
+              abbreviation: "HI",
+            },
+            {
+              name: "Idaho",
+              abbreviation: "ID",
+            },
+            {
+              name: "Illinois",
+              abbreviation: "IL",
+            },
+            {
+              name: "Indiana",
+              abbreviation: "IN",
+            },
+            {
+              name: "Iowa",
+              abbreviation: "IA",
+            },
+            {
+              name: "Kansas",
+              abbreviation: "KS",
+            },
+            {
+              name: "Kentucky",
+              abbreviation: "KY",
+            },
+            {
+              name: "Louisiana",
+              abbreviation: "LA",
+            },
+            {
+              name: "Maine",
+              abbreviation: "ME",
+            },
+            {
+              name: "Marshall Islands",
+              abbreviation: "MH",
+            },
+            {
+              name: "Maryland",
+              abbreviation: "MD",
+            },
+            {
+              name: "Massachusetts",
+              abbreviation: "MA",
+            },
+            {
+              name: "Michigan",
+              abbreviation: "MI",
+            },
+            {
+              name: "Minnesota",
+              abbreviation: "MN",
+            },
+            {
+              name: "Mississippi",
+              abbreviation: "MS",
+            },
+            {
+              name: "Missouri",
+              abbreviation: "MO",
+            },
+            {
+              name: "Montana",
+              abbreviation: "MT",
+            },
+            {
+              name: "Nebraska",
+              abbreviation: "NE",
+            },
+            {
+              name: "Nevada",
+              abbreviation: "NV",
+            },
+            {
+              name: "New Hampshire",
+              abbreviation: "NH",
+            },
+            {
+              name: "New Jersey",
+              abbreviation: "NJ",
+            },
+            {
+              name: "New Mexico",
+              abbreviation: "NM",
+            },
+            {
+              name: "New York",
+              abbreviation: "NY",
+            },
+            {
+              name: "North Carolina",
+              abbreviation: "NC",
+            },
+            {
+              name: "North Dakota",
+              abbreviation: "ND",
+            },
+            {
+              name: "Northern Mariana Islands",
+              abbreviation: "MP",
+            },
+            {
+              name: "Ohio",
+              abbreviation: "OH",
+            },
+            {
+              name: "Oklahoma",
+              abbreviation: "OK",
+            },
+            {
+              name: "Oregon",
+              abbreviation: "OR",
+            },
+            {
+              name: "Palau",
+              abbreviation: "PW",
+            },
+            {
+              name: "Pennsylvania",
+              abbreviation: "PA",
+            },
+            {
+              name: "Puerto Rico",
+              abbreviation: "PR",
+            },
+            {
+              name: "Rhode Island",
+              abbreviation: "RI",
+            },
+            {
+              name: "South Carolina",
+              abbreviation: "SC",
+            },
+            {
+              name: "South Dakota",
+              abbreviation: "SD",
+            },
+            {
+              name: "Tennessee",
+              abbreviation: "TN",
+            },
+            {
+              name: "Texas",
+              abbreviation: "TX",
+            },
+            {
+              name: "Utah",
+              abbreviation: "UT",
+            },
+            {
+              name: "Vermont",
+              abbreviation: "VT",
+            },
+            {
+              name: "Virgin Islands",
+              abbreviation: "VI",
+            },
+            {
+              name: "Virginia",
+              abbreviation: "VA",
+            },
+            {
+              name: "Washington",
+              abbreviation: "WA",
+            },
+            {
+              name: "West Virginia",
+              abbreviation: "WV",
+            },
+            {
+              name: "Wisconsin",
+              abbreviation: "WI",
+            },
+            {
+              name: "Wyoming",
+              abbreviation: "WY",
+            },
+          ],
+        };
+      },
+
+      methods: {
+        validateSlide(cs) {
+          let fields = [];
+          let fieldRange = [];
+
+          if (cs === 0) {
+            fieldRange = [0, 5];
+          }
+          if (cs === 1) {
+            fieldRange = [5, 7];
+          }
+          if (cs === 2) {
+            fieldRange = [7, 14];
+          }
+          if (cs === 3) {
+            fieldRange = [14, 18];
+          }
+
+          let [indexStart, totalItems] = [...fieldRange];
+
+          Object.entries(this.validator)
+            .slice(indexStart, totalItems)
+            .forEach((el) => {
+              let [property, value] = [...el];
+
+              if (value === 0) this.validator[`${property}`] = true;
+            });
+
+          failedValidation = Object.values(this.validator)
+            .slice(indexStart, totalItems)
+            .includes(true);
+
+          if (failedValidation === false) this.nextSlide(cs);
         },
-        data: {
-          //basic company details
-          companyName: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
+        nextSlide(cs) {
+          this.currentSlide += 1;
+        },
+        previousSlide(cs) {
+          if (cs === 4) {
+            this.data.signatureData = "";
+            this.data.adoptSignature = false;
+            this.data.tos = false;
+          }
 
-          //account preferences
-          domainPrefix: "",
-          seatCount: 0,
-
-          //billing method
-          cardOwnerName: "",
-          cardType: "0",
-          cardNumber: "",
-          cardMonthExpiration: "0",
-          cardYearExpiration: "0",
-          cardCvv: "",
-          cardZip: "",
-
-          //billing address
-          billingStreetAddress: "",
-          billingSuiteUnit: "",
-          billingCity: "",
-          billingState: "0",
-          billingZip: "",
-
-          //confirmation
-          signatureData: "",
-          adoptSignature: false,
-          tos: false,
+          if (cs !== 0) this.currentSlide -= 1;
         },
 
-        cardTypesOptions: ["Visa", "Mastercard", "Discover"],
-
-        expirationMonthOptions: [
-          { monthName: "January", monthNumber: "01" },
-          { monthName: "February", monthNumber: "02" },
-          { monthName: "March", monthNumber: "03" },
-          { monthName: "April", monthNumber: "04" },
-          { monthName: "May", monthNumber: "05" },
-          { monthName: "June", monthNumber: "06" },
-          { monthName: "July", monthNumber: "07" },
-          { monthName: "August", monthNumber: "08" },
-          { monthName: "September", monthNumber: "09" },
-          { monthName: "October", monthNumber: "10" },
-          { monthName: "November", monthNumber: "11" },
-          { monthName: "December", monthNumber: "12" },
-        ],
-
-        expirationYearOptions: [
-          "2023",
-          "2024",
-          "2025",
-          "2026",
-          "2027",
-          "2028",
-          "2029",
-          "2030",
-          "2031",
-          "2032",
-          "2033",
-          "2034",
-          "2035",
-        ],
-
-        seatsOptions: [
-          { userSeats: "3 Users", seatsNumber: 3, seatPrice: 250 },
-          { userSeats: "4 Users", seatsNumber: 4, seatPrice: 325 },
-          { userSeats: "5 Users", seatsNumber: 5, seatPrice: 400 },
-          { userSeats: "6 Users", seatsNumber: 6, seatPrice: 475 },
-          { userSeats: "7 Users", seatsNumber: 7, seatPrice: 550 },
-          { userSeats: "8 Users", seatsNumber: 8, seatPrice: 625 },
-          { userSeats: "9 Users", seatsNumber: 9, seatPrice: 700 },
-          { userSeats: "10 Users", seatsNumber: 10, seatPrice: 775 },
-          { userSeats: "11 Users", seatsNumber: 11, seatPrice: 850 },
-          { userSeats: "12 Users", seatsNumber: 12, seatPrice: 925 },
-          { userSeats: "13 Users", seatsNumber: 13, seatPrice: 1000 },
-          { userSeats: "14 Users", seatsNumber: 14, seatPrice: 1075 },
-          { userSeats: "15 Users", seatsNumber: 15, seatPrice: 1150 },
-          { userSeats: "16 Users", seatsNumber: 16, seatPrice: 1225 },
-          { userSeats: "17 Users", seatsNumber: 17, seatPrice: 1300 },
-          { userSeats: "18 Users", seatsNumber: 18, seatPrice: 1375 },
-          { userSeats: "19 Users", seatsNumber: 19, seatPrice: 1450 },
-          { userSeats: "20 Users", seatsNumber: 20, seatPrice: 1525 },
-          { userSeats: "21 Users", seatsNumber: 21, seatPrice: 1600 },
-          { userSeats: "22 Users", seatsNumber: 22, seatPrice: 1675 },
-          { userSeats: "23 Users", seatsNumber: 23, seatPrice: 1750 },
-          { userSeats: "24 Users", seatsNumber: 24, seatPrice: 1825 },
-          { userSeats: "25 Users", seatsNumber: 25, seatPrice: 1900 },
-          { userSeats: "26 Users", seatsNumber: 26, seatPrice: 1975 },
-          { userSeats: "27 Users", seatsNumber: 27, seatPrice: 2050 },
-          { userSeats: "28 Users", seatsNumber: 28, seatPrice: 2125 },
-          { userSeats: "29 Users", seatsNumber: 29, seatPrice: 2200 },
-          { userSeats: "30 Users", seatsNumber: 30, seatPrice: 2275 },
-          { userSeats: "31 Users", seatsNumber: 31, seatPrice: 2350 },
-          { userSeats: "32 Users", seatsNumber: 32, seatPrice: 2425 },
-          { userSeats: "33 Users", seatsNumber: 33, seatPrice: 2500 },
-          { userSeats: "34 Users", seatsNumber: 34, seatPrice: 2575 },
-          { userSeats: "35 Users", seatsNumber: 35, seatPrice: 2650 },
-          { userSeats: "36 Users", seatsNumber: 36, seatPrice: 2725 },
-          { userSeats: "37 Users", seatsNumber: 37, seatPrice: 2800 },
-          { userSeats: "38 Users", seatsNumber: 38, seatPrice: 2875 },
-          { userSeats: "39 Users", seatsNumber: 39, seatPrice: 2950 },
-          { userSeats: "40 Users", seatsNumber: 40, seatPrice: 3025 },
-          { userSeats: "41 Users", seatsNumber: 41, seatPrice: 3100 },
-          { userSeats: "42 Users", seatsNumber: 42, seatPrice: 3175 },
-          { userSeats: "43 Users", seatsNumber: 43, seatPrice: 3250 },
-          { userSeats: "44 Users", seatsNumber: 44, seatPrice: 3325 },
-          { userSeats: "45 Users", seatsNumber: 45, seatPrice: 3400 },
-          { userSeats: "46 Users", seatsNumber: 46, seatPrice: 3475 },
-          { userSeats: "47 Users", seatsNumber: 47, seatPrice: 3550 },
-          { userSeats: "48 Users", seatsNumber: 48, seatPrice: 3625 },
-          { userSeats: "49 Users", seatsNumber: 49, seatPrice: 3700 },
-          { userSeats: "50 Users", seatsNumber: 50, seatPrice: 2500 },
-          { userSeats: "51 Users", seatsNumber: 51, seatPrice: 2550 },
-          { userSeats: "52 Users", seatsNumber: 52, seatPrice: 2600 },
-          { userSeats: "53 Users", seatsNumber: 53, seatPrice: 2650 },
-          { userSeats: "54 Users", seatsNumber: 54, seatPrice: 2700 },
-          { userSeats: "55 Users", seatsNumber: 55, seatPrice: 2750 },
-          { userSeats: "56 Users", seatsNumber: 56, seatPrice: 2800 },
-          { userSeats: "57 Users", seatsNumber: 57, seatPrice: 2850 },
-          { userSeats: "58 Users", seatsNumber: 58, seatPrice: 2900 },
-          { userSeats: "59 Users", seatsNumber: 59, seatPrice: 2950 },
-          { userSeats: "60 Users", seatsNumber: 60, seatPrice: 3000 },
-          { userSeats: "61 Users", seatsNumber: 61, seatPrice: 3050 },
-          { userSeats: "62 Users", seatsNumber: 62, seatPrice: 3100 },
-          { userSeats: "63 Users", seatsNumber: 63, seatPrice: 3150 },
-          { userSeats: "64 Users", seatsNumber: 64, seatPrice: 3200 },
-          { userSeats: "65 Users", seatsNumber: 65, seatPrice: 3250 },
-          { userSeats: "66 Users", seatsNumber: 66, seatPrice: 3300 },
-          { userSeats: "67 Users", seatsNumber: 67, seatPrice: 3350 },
-          { userSeats: "68 Users", seatsNumber: 68, seatPrice: 3400 },
-          { userSeats: "69 Users", seatsNumber: 69, seatPrice: 3450 },
-          { userSeats: "70 Users", seatsNumber: 70, seatPrice: 3500 },
-          { userSeats: "71 Users", seatsNumber: 71, seatPrice: 3550 },
-          { userSeats: "72 Users", seatsNumber: 72, seatPrice: 3600 },
-          { userSeats: "73 Users", seatsNumber: 73, seatPrice: 3650 },
-          { userSeats: "74 Users", seatsNumber: 74, seatPrice: 3700 },
-          { userSeats: "75 Users", seatsNumber: 75, seatPrice: 3750 },
-          { userSeats: "76 Users", seatsNumber: 76, seatPrice: 3800 },
-          { userSeats: "77 Users", seatsNumber: 77, seatPrice: 3850 },
-          { userSeats: "78 Users", seatsNumber: 78, seatPrice: 3900 },
-          { userSeats: "79 Users", seatsNumber: 79, seatPrice: 3950 },
-          { userSeats: "80 Users", seatsNumber: 80, seatPrice: 4000 },
-          { userSeats: "81 Users", seatsNumber: 81, seatPrice: 4050 },
-          { userSeats: "82 Users", seatsNumber: 82, seatPrice: 4100 },
-          { userSeats: "83 Users", seatsNumber: 83, seatPrice: 4150 },
-          { userSeats: "84 Users", seatsNumber: 84, seatPrice: 4200 },
-          { userSeats: "85 Users", seatsNumber: 85, seatPrice: 4250 },
-          { userSeats: "86 Users", seatsNumber: 86, seatPrice: 4300 },
-          { userSeats: "87 Users", seatsNumber: 87, seatPrice: 4350 },
-          { userSeats: "88 Users", seatsNumber: 88, seatPrice: 4400 },
-          { userSeats: "89 Users", seatsNumber: 89, seatPrice: 4450 },
-          { userSeats: "90 Users", seatsNumber: 90, seatPrice: 4500 },
-          { userSeats: "91 Users", seatsNumber: 91, seatPrice: 4550 },
-          { userSeats: "92 Users", seatsNumber: 92, seatPrice: 4600 },
-          { userSeats: "93 Users", seatsNumber: 93, seatPrice: 4650 },
-          { userSeats: "94 Users", seatsNumber: 94, seatPrice: 4700 },
-          { userSeats: "95 Users", seatsNumber: 95, seatPrice: 4750 },
-          { userSeats: "96 Users", seatsNumber: 96, seatPrice: 4800 },
-          { userSeats: "97 Users", seatsNumber: 97, seatPrice: 4850 },
-          { userSeats: "98 Users", seatsNumber: 98, seatPrice: 4900 },
-          { userSeats: "99 Users", seatsNumber: 99, seatPrice: 4950 },
-          { userSeats: "100 Users", seatsNumber: 100, seatPrice: 5000 },
-        ],
-
-        statesOptions: [
-          {
-            name: "Alabama",
-            abbreviation: "AL",
-          },
-          {
-            name: "Alaska",
-            abbreviation: "AK",
-          },
-          {
-            name: "American Samoa",
-            abbreviation: "AS",
-          },
-          {
-            name: "Arizona",
-            abbreviation: "AZ",
-          },
-          {
-            name: "Arkansas",
-            abbreviation: "AR",
-          },
-          {
-            name: "California",
-            abbreviation: "CA",
-          },
-          {
-            name: "Colorado",
-            abbreviation: "CO",
-          },
-          {
-            name: "Connecticut",
-            abbreviation: "CT",
-          },
-          {
-            name: "Delaware",
-            abbreviation: "DE",
-          },
-          {
-            name: "District Of Columbia",
-            abbreviation: "DC",
-          },
-          {
-            name: "Federated States Of Micronesia",
-            abbreviation: "FM",
-          },
-          {
-            name: "Florida",
-            abbreviation: "FL",
-          },
-          {
-            name: "Georgia",
-            abbreviation: "GA",
-          },
-          {
-            name: "Guam",
-            abbreviation: "GU",
-          },
-          {
-            name: "Hawaii",
-            abbreviation: "HI",
-          },
-          {
-            name: "Idaho",
-            abbreviation: "ID",
-          },
-          {
-            name: "Illinois",
-            abbreviation: "IL",
-          },
-          {
-            name: "Indiana",
-            abbreviation: "IN",
-          },
-          {
-            name: "Iowa",
-            abbreviation: "IA",
-          },
-          {
-            name: "Kansas",
-            abbreviation: "KS",
-          },
-          {
-            name: "Kentucky",
-            abbreviation: "KY",
-          },
-          {
-            name: "Louisiana",
-            abbreviation: "LA",
-          },
-          {
-            name: "Maine",
-            abbreviation: "ME",
-          },
-          {
-            name: "Marshall Islands",
-            abbreviation: "MH",
-          },
-          {
-            name: "Maryland",
-            abbreviation: "MD",
-          },
-          {
-            name: "Massachusetts",
-            abbreviation: "MA",
-          },
-          {
-            name: "Michigan",
-            abbreviation: "MI",
-          },
-          {
-            name: "Minnesota",
-            abbreviation: "MN",
-          },
-          {
-            name: "Mississippi",
-            abbreviation: "MS",
-          },
-          {
-            name: "Missouri",
-            abbreviation: "MO",
-          },
-          {
-            name: "Montana",
-            abbreviation: "MT",
-          },
-          {
-            name: "Nebraska",
-            abbreviation: "NE",
-          },
-          {
-            name: "Nevada",
-            abbreviation: "NV",
-          },
-          {
-            name: "New Hampshire",
-            abbreviation: "NH",
-          },
-          {
-            name: "New Jersey",
-            abbreviation: "NJ",
-          },
-          {
-            name: "New Mexico",
-            abbreviation: "NM",
-          },
-          {
-            name: "New York",
-            abbreviation: "NY",
-          },
-          {
-            name: "North Carolina",
-            abbreviation: "NC",
-          },
-          {
-            name: "North Dakota",
-            abbreviation: "ND",
-          },
-          {
-            name: "Northern Mariana Islands",
-            abbreviation: "MP",
-          },
-          {
-            name: "Ohio",
-            abbreviation: "OH",
-          },
-          {
-            name: "Oklahoma",
-            abbreviation: "OK",
-          },
-          {
-            name: "Oregon",
-            abbreviation: "OR",
-          },
-          {
-            name: "Palau",
-            abbreviation: "PW",
-          },
-          {
-            name: "Pennsylvania",
-            abbreviation: "PA",
-          },
-          {
-            name: "Puerto Rico",
-            abbreviation: "PR",
-          },
-          {
-            name: "Rhode Island",
-            abbreviation: "RI",
-          },
-          {
-            name: "South Carolina",
-            abbreviation: "SC",
-          },
-          {
-            name: "South Dakota",
-            abbreviation: "SD",
-          },
-          {
-            name: "Tennessee",
-            abbreviation: "TN",
-          },
-          {
-            name: "Texas",
-            abbreviation: "TX",
-          },
-          {
-            name: "Utah",
-            abbreviation: "UT",
-          },
-          {
-            name: "Vermont",
-            abbreviation: "VT",
-          },
-          {
-            name: "Virgin Islands",
-            abbreviation: "VI",
-          },
-          {
-            name: "Virginia",
-            abbreviation: "VA",
-          },
-          {
-            name: "Washington",
-            abbreviation: "WA",
-          },
-          {
-            name: "West Virginia",
-            abbreviation: "WV",
-          },
-          {
-            name: "Wisconsin",
-            abbreviation: "WI",
-          },
-          {
-            name: "Wyoming",
-            abbreviation: "WY",
-          },
-        ],
-      };
-    },
-    
-    methods: {
-      validateSlide(cs){
-
-        let fields = []
-        let fieldRange = []
-
-        if(cs === 0){
-          fieldRange = [0, 5]
-        }
-        if(cs === 1){
-          fieldRange = [5, 7]
-        }
-        if(cs === 2){
-          fieldRange = [7, 14]
-        }
-        if(cs === 3){
-          fieldRange = [14, 18]
-        }
-
-        let [indexStart, totalItems] = [...fieldRange]
-
-        Object.entries(this.validator).slice(indexStart, totalItems).forEach((el)=>{
-          let [property, value] = [...el]
-
-          if(value === 0) this.validator[`${property}`] = true
-        })
-
-        failedValidation = Object.values(this.validator).slice(indexStart, totalItems).includes(true)
-
-        if(failedValidation === false) this.nextSlide(cs)
-
-      },
-      nextSlide(cs) {
-        //always stop from going past the last slide
-        if (cs !== 4) this.currentSlide += 1
-
-      },
-      previousSlide(cs) {
-        if(cs === 4){
-          this.data.signatureData = ''
-          this.data.adoptSignature = false
-          this.data.tos = false
-        }
-        
-        if (cs !== 0) this.currentSlide -= 1
-      },
-
-      clear() {
-        this.data.adoptSignature = false;
-        this.data.tos = false;
-        this.signaturePad.clear();
-        this.data.signatureData = "";
-      },
-      save() {
-        if (!this.signaturePad.isEmpty()) {
-          this.validator.signatureData = false;
-          this.data.signatureData = this.signaturePad.toDataURL();
-        } else {
-          this.validator.signatureData = true;
-        }
-      },
-      createAccount() {
-        alert("Account Created");
-      },
-      validateField(input, pattern, validating) {
-        const passed = pattern.test(input);
-        this.validator[validating] = !passed;
-      },
-    },
-    watch: {
-      async currentSlide(n) {
-        if (n === 4) {
-          
-            this.signaturePad = await new SignaturePad(this.$refs.canvas, {
-            penColor: "black",
-          });
-
-          this.canvas = this.$refs.canvas;
-
-          const ratio = Math.max(window.devicePixelRatio || 1, 1);
-          this.canvas.width = this.canvas.offsetWidth * ratio;
-          this.canvas.height = this.canvas.offsetHeight * ratio;
-          this.canvas.getContext("2d").scale(ratio, ratio);
+        clear() {
+          this.data.adoptSignature = false;
+          this.data.tos = false;
           this.signaturePad.clear();
+          this.data.signatureData = "";
+        },
+        save() {
+          if (!this.signaturePad.isEmpty()) {
+            this.validator.signatureData = false;
+            this.data.signatureData = this.signaturePad.toDataURL();
+            
+          } else {
+            this.validator.signatureData = true;
+          }
+        },
+        async saveSignaturePng() {
+          try {
+
+            const response = await fetch(
+              this.apiUrl,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(this.data),
+              }
+            );
+
+            const responseData = await response.json();
+            console.log(responseData);
+
+            if(responseData.message === 'success') {
+              //sets the slide to the confirmation page slide
+              this.currentSlide = 5;
+            }
+          } catch (e) {
+            console.log(e);
+          }
+        },
+        async createAccount(signUpData) {
           
-          
-        }
-      },
-      //check final field slide
-      "data.phone"(n){},
-      //check final field slide
-      "data.seatCount"(n){},
-      //check final field slide
-      "data.cardZip"(n){},
-      //check final field slide
-      "data.billingZip"(n){},
-      //check final field slide
-      "data.tos"(n) {
-        if(n){
-          this.validator.tos = false
-          //check all fields in slide
 
-        } else {
-          this.validator.tos = true
-        }
+          this.saveSignaturePng();
+        },
+        validateField(input, pattern, validating) {
+          const passed = pattern.test(input);
+          this.validator[validating] = !passed;
+        },
       },
-      "data.adoptSignature"(n) {
-        !n ? this.data.tos = false : ''
+      watch: {
+        async currentSlide(n) {
+          if (n === 4) {
+            this.signaturePad = await new SignaturePad(this.$refs.canvas, {
+              penColor: "black",
+            });
 
-        n
-          ? (this.validator.adoptSignature = true)
-          : (this.validator.adoptSignature = false);
+            this.canvas = this.$refs.canvas;
+
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            this.canvas.width = this.canvas.offsetWidth * ratio;
+            this.canvas.height = this.canvas.offsetHeight * ratio;
+            this.canvas.getContext("2d").scale(ratio, ratio);
+            this.signaturePad.clear();
+          }
+        },
+        //check final field slide
+        "data.seatCount"(n) {
+          n < 50
+            ? (this.data.totalDueToday = n * 75)
+            : (this.data.totalDueToday = n * 50);
+
+          if(n < 3) this.data.seatCount = 3
+        },
+        "data.tos"(n) {
+          if (n) {
+            this.validator.tos = false;
+            //check all fields in slide
+          } else {
+            this.validator.tos = true;
+          }
+        },
+        "data.adoptSignature"(n) {
+          !n ? (this.data.tos = false) : "";
+
+          n
+            ? (this.validator.adoptSignature = true)
+            : (this.validator.adoptSignature = false);
+        },
       },
-    },
-  }).mount("#app");
-</script>
-
+    }).mount("#app");
+  </script>
 </html>
